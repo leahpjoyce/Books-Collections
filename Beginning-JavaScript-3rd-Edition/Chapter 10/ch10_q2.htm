@@ -1,0 +1,48 @@
+<html>
+<head>
+</head>
+<body>
+
+<script language="JavaScript">
+function checkForm(theForm)
+{
+   var formValid = true;
+   var elementCount  = 0;
+
+   while(elementCount < theForm.length)
+   {
+      if (theForm.elements[elementCount].type == "text")
+      {
+         if (theForm.elements[elementCount].value == "")
+         {
+            alert("Please complete all form elements")
+            theForm.elements[elementCount].focus();
+            formValid = false;
+            break;
+         }
+      }
+
+      elementCount++;
+   }
+
+   return formValid;
+
+}
+
+</script>
+
+<form name="form1" onsubmit="return checkForm(document.form1)">
+   <input type="text" id="text1" name="text1">
+   <br>
+   CheckBox 1<input type="checkbox" id="checkbox2" name="checkbox2">
+   <br>
+   CheckBox 1<input type="checkbox" id="checkbox1" name="checkbox1">
+   <br>
+   <input type="text" id="text2" name="text2">
+   <P>
+   <input type="submit" value="Submit" id="submit1" name="submit1">
+   </P>
+</form>
+
+</body>
+</html>

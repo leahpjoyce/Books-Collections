@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Using the srcElement Property</title>
+
+    <script type="text/javascript">
+    function image_eventHandler() {
+        var sourceElement = window.event.srcElement;  //Get the element.
+        var eventType = window.event.type;  //Get the type of event.
+        
+        if (eventType == "mouseover") { //The mouse rolled over the image.
+            sourceElement.src = "o.gif"; //So change the image's src property.
+        }
+        
+        if (eventType == "mouseout") { //The mouse moved out.
+            sourceElement.src = "x.gif"; //So change it back to the original picture.
+        }
+    }
+    </script>
+</head>
+<body>
+    <img src="x.gif" onmouseover="image_eventHandler()" onmouseout="image_eventHandler()" />
+</body>
+</html>

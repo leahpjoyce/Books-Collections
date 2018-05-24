@@ -1,0 +1,137 @@
+<html>
+<head>
+    <title>Form Field Validation</title>
+    <style type="text/css">
+        .fieldname
+        {
+            text-align: right;
+        }
+        
+        .submit
+        {
+            text-align: right;
+        }
+    </style>
+    <script type="text/javascript" src="HttpRequest.js"></script>
+    <script type="text/javascript">
+        var isUsernameTaken;
+        var isEmailTaken;
+
+        function checkUsername_callBack(sResponseText) 
+        {
+            if (sResponseText == "available") 
+            {
+                isUsernameTaken = false;
+            } 
+            else 
+            {
+                isUsernameTaken = true;
+            }
+        }
+
+        function checkEmail_callBack(sResponseText) 
+        {
+            if (sResponseText == "available") 
+            {
+                isEmailTaken = false;
+            } 
+            else 
+            {
+                isEmailTaken = true;
+            }
+        }
+
+        function form_submit() 
+        {
+            var request = new HttpRequest();
+            request.async = false;
+            
+            //First check the username
+            var userValue = document.getElementById("username").value;
+            
+            if (userValue == "") 
+            {
+                alert("Please enter a user name to check!");
+                return false;
+            }
+            
+            request.url = "formvalidator.php?username=" + userValue;
+            request.callBack = checkUsername_callBack;
+            request.send();
+            
+            if (isUsernameTaken) 
+            {
+                alert("The username " + userValue + " is not available!");
+                return false;
+            }
+            
+            //Now check the email
+            var emailValue = document.getElementById("email").value;
+            
+            if (emailValue == "") 
+            {
+                alert("Please enter an email address to check!");
+                return false;
+            }
+            
+            request.url = "formvalidator.php?email=" + emailValue;
+            request.callBack = checkEmail_callBack;
+            request.send();
+            
+            if (isEmailTaken) 
+            {
+                alert("I'm sorry, but " + emailValue + " is in use by another user.");
+                return false;
+            }
+            
+            //If the code's made it this far, everything's good
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <form onsubmit="return form_submit()">
+        <table>
+            <tr>
+                <td class="fieldname">
+                    Username:
+                </td>
+                <td>
+                    <input type="text" id="username" />
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Email:
+                </td>
+                <td>
+                    <input type="text" id="email" />
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Password:
+                </td>
+                <td>
+                    <input type="text" id="password" />
+                </td>
+
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Verify Password:
+                </td>
+                <td>
+                    <input type="text" id="password2" />
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2" class="submit">
+                    <input type="submit" value="Submit" />
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

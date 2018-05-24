@@ -1,0 +1,116 @@
+<html>
+<head>
+    <title>Form Field Validation</title>
+    <style type="text/css">
+        .fieldname
+        {
+            text-align: right;
+        }
+        
+        .submit
+        {
+            text-align: right;
+        }
+        
+        #hiddenFrame {
+            display: none;
+        }
+    </style>
+    <script>
+        function checkUsername() {
+            var userValue = document.getElementById("username").value;
+            
+            if (userValue == "") {
+                alert("Please enter a user name to check!");
+                return;
+            }
+            
+            var url = "iframe_formvalidator.php?username=" + userValue;
+            
+            frames["hiddenFrame"].location = url;
+        }
+        
+        function checkUsername_callBack(data, userValue) {           
+            if (data == "available") {
+                alert("The username " + userValue + " is available!");
+            } else {
+                alert("We're sorry, but " + userValue + " is not available.");
+            }
+        }
+        
+        function checkEmail() {
+            var emailValue = document.getElementById("email").value;
+            
+            if (emailValue == "") {
+                alert("Please enter an email address to check!");
+                return;
+            }
+            
+            var url = "iframe_formvalidator.php?email=" + emailValue;
+            
+            frames["hiddenFrame"].location = url;
+        }
+        
+        function checkEmail_callBack(data, emailValue) {            
+            if (data == "available") {
+                alert("The email " + emailValue + " is currently not in use!");
+            } else {
+                alert("We're sorry, but " + emailValue + " is in use by another user.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <table>
+            <tr>
+                <td class="fieldname">
+                    Username:
+                </td>
+                <td>
+                    <input type="text" id="username" />
+                </td>
+                <td>
+                    <a href="javascript: checkUsername()">Check Availability</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Email:
+                </td>
+                <td>
+                    <input type="text" id="email" />
+                </td>
+                <td>
+                    <a href="javascript: checkEmail()">Check Availability</a>
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Password:
+                </td>
+                <td>
+                    <input type="text" id="password" />
+                </td>
+                <td />
+            </tr>
+            <tr>
+                <td class="fieldname">
+                    Verify Password:
+                </td>
+                <td>
+                    <input type="text" id="password2" />
+                </td>
+                <td />
+            </tr>
+            <tr>
+                <td colspan="2" class="submit">
+                    <input type="submit" value="Submit" />
+                </td>
+                <td />
+            </tr>
+        </table>
+    </form>
+    <iframe src="about:blank" id="hiddenFrame" name="hiddenFrame" />   
+</body>
+</html>

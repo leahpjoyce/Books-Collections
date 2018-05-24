@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Using the type Property in Other Browsers</title>
+
+    <script type="text/javascript">
+    function paragraph_eventHandler(evt) {        
+        if (evt.type == "click") { //The onclick event was fired.
+            alert("You Clicked Me!");
+        } else if (evt.type == "mouseover") { //The onmouseover event was fired.
+            alert("You Tickled Me!");
+        }
+    }
+    </script>
+</head>
+<body>
+    <p onclick="paragraph_eventHandler(event)" onmouseover="paragraph_eventHandler(event)">
+        Move your mouse over me. Click me, too!
+    </p>
+</body>
+</html>

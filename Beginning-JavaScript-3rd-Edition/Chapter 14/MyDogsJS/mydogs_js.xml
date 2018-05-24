@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<myDogs>
+    <dog>
+        <name>Morgan</name>
+		<breed>Labrador Retriever</breed>
+		<age>0 years, 10 months</age>
+        <fullBlood>yes</fullBlood>
+        <color>chocolate</color>
+    </dog>
+    <dog>
+        <name>Molly</name>
+		<breed>Labrador Retriever</breed>
+		<age>8 years, 11 months</age>
+		<fullBlood>yes</fullBlood>
+		<color>yellow</color>
+	</dog>
+	<dog>
+		<name>Casey</name>
+		<breed>Pomeranian</breed>
+		<age>6 years, 2 months</age>
+        <fullBlood>yes</fullBlood>
+        <color>brown</color>
+    </dog>
+</myDogs>

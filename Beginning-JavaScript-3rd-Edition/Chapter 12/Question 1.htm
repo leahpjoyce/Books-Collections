@@ -1,0 +1,50 @@
+<html>
+<head>
+    <title>Chapter 12, Question 1</title>
+    <style type="text/css">
+        #boxOne {
+            position: absolute;
+            top: 125px;
+            left: 231px;
+            width: 100px;
+            height: 100px;
+            background-color: navy;
+            visibility: hidden;
+        }
+        
+        #boxTwo {
+            position: absolute;
+            top: 100px;
+            left: 400px;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            visibility: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        function showBoxOne() {
+            var boxOne = document.getElementById("boxOne");
+            var boxTwo = document.getElementById("boxTwo");
+            
+            boxOne.style.visibility = "visible";
+            boxTwo.style.visibility = "hidden";
+        }
+        
+        function showBoxTwo() {
+            var boxOne = document.getElementById("boxOne");
+            var boxTwo = document.getElementById("boxTwo");
+            
+            boxOne.style.visibility = "hidden";
+            boxTwo.style.visibility = "visible";
+        }
+    </script>
+</head>
+<body>
+    <a href="#" onclick="showBoxOne(); return false;">Show First Box</a>
+    <a href="#" onclick="showBoxTwo(); return false;">Show Second Box</a>
+        
+    <div id="boxOne"></div>
+    <div id="boxTwo"></div>
+</body>
+</html>

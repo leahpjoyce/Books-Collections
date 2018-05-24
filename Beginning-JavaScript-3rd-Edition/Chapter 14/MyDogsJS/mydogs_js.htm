@@ -1,0 +1,130 @@
+<html>
+<head>
+    <title>My Dogs Final</title>
+    <script type="text/javascript">
+    function createDocument() 
+    {
+        //Temporary DOM object.
+        var xmlDoc;
+
+        //Create the DOM object for IE
+        if (window.ActiveXObject) 
+        {
+            var versions = 
+            [
+                "Msxml2.DOMDocument.6.0",
+                "Msxml2.DOMDocument.3.0"
+            ];
+
+            for (var i = 0; i < versions.length; i++) 
+            {
+                try 
+                {
+                    xmlDoc = new ActiveXObject(versions[i]);
+                    return xmlDoc;
+                } 
+                catch (error) 
+                {
+                    //do nothing here
+                }
+            }
+        }
+        //Create the DOM for Firefox and Opera
+        else if (document.implementation && document.implementation.createDocument) 
+        { 
+            xmlDoc = document.implementation.createDocument("","",null);
+            return xmlDoc;
+        }
+        
+        return null;
+    }
+        
+    var xmlDocument = createDocument();
+    xmlDocument.load("mydogs_js.xml");
+    
+    function displayDogs() 
+    {
+        //Get the <dog/> elements.
+        var dogNodes = xmlDocument.getElementsByTagName("dog");
+        //Create a <table/> element.
+        var table = document.createElement("table");
+        table.setAttribute("cellPadding",5); //Give the table some cell padding.
+        table.setAttribute("width", "100%");
+        table.setAttribute("border", "1");
+        
+        /*** Begin <thead/> Element. ***/
+        var tableHeader = document.createElement("thead");
+        //Create a <tr/> element.
+        var tableRow = document.createElement("tr");
+        
+        //Loop through the child nodes of a <dog/> element.
+        for (var i = 0; i < dogNodes[0].childNodes.length; i++) 
+        {
+            var currentNode = dogNodes[0].childNodes[i];
+            //Check to see if the child node is an element.
+            if (currentNode.nodeType == 1) 
+            {
+                //Create a <th/> element.
+                var tableHeaderCell = document.createElement("th");
+                //Create a text node with currentNode's nodeName.
+                var textData = document.createTextNode(currentNode.nodeName);
+                
+                //Append the text node to the heading.
+                tableHeaderCell.appendChild(textData);
+                //Append heading to the row.
+                tableRow.appendChild(tableHeaderCell);
+            }
+        }
+        //Append the row with the colum headers to the <thead/>
+        tableHeader.appendChild(tableRow);
+        //Append the <thead/> to the table.
+        table.appendChild(tableHeader);
+        /*** End <thead/> Element. ***/
+        
+        /*** Begin <tbody/> Element. ***/
+        var tableBody = document.createElement("tbody");
+        
+        //Loop through the <dog/> elements.
+        for (var i = 0; i < dogNodes.length; i++) 
+        {
+            //Create a new <tr/> element.
+            var tableRow = document.createElement("tr");
+            
+            //Now loop through this <dog/>'s child nodes.
+            for (var j = 0; j < dogNodes[i].childNodes.length; j++) 
+            {
+                //Store the current node for easier access.
+                var currentNode = dogNodes[i].childNodes[j];
+                //Check the node to see if it's an element.
+                if (currentNode.nodeType == 1) 
+                {
+                    //Create a data cell.
+                    var tableDataCell = document.createElement("td");
+                    //Create a text node with currentNode's nodeName.
+                    var textData = document.createTextNode(currentNode.firstChild.nodeValue);
+                    
+                    //append the text node to the data cell.
+                    tableDataCell.appendChild(textData);
+                    
+                    //Append the data cell to the row.
+                    tableRow.appendChild(tableDataCell);
+                }
+            }
+            
+            //Append the row to the <tbody/>.
+            tableBody.appendChild(tableRow);
+        }
+        
+        //Append the tbody to the table.
+        table.appendChild(tableBody);
+        
+        /*** End <tbody/> Element. ***/
+        
+        document.body.appendChild(table);
+    }
+    </script>
+</head>
+<body>
+    <a href="javascript: displayDogs();">Display Dogs</a>
+</body>
+</html>

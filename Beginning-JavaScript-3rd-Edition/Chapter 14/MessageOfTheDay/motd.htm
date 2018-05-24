@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>Message of the Day</title>
+    <script type="text/javascript">
+    function createDocument() 
+    {
+        //Temporary DOM object.
+        var xmlDoc;
+
+        //Create the DOM object for IE
+        if (window.ActiveXObject) 
+        {
+            var versions = 
+            [
+                "Msxml2.DOMDocument.6.0",
+                "Msxml2.DOMDocument.3.0"
+            ];
+
+            for (var i = 0; i < versions.length; i++) 
+            {
+                try 
+                {
+                    xmlDoc = new ActiveXObject(versions[i]);
+                    return xmlDoc;
+                } 
+                catch (error) 
+                {
+                    //do nothing here
+                }
+            }
+        }
+        //Create the DOM for Firefox and Opera
+        else if (document.implementation && document.implementation.createDocument) 
+        { 
+            xmlDoc = document.implementation.createDocument("","",null);
+            return xmlDoc;
+        }
+        
+        return null;
+    }
+    
+    //Gets the message from the XML file
+    function getDailyMessage() 
+    {
+        //Get the node list of <daily/> elements.
+        var messages = xmlDoc.getElementsByTagName("daily");
+        //Create a date object.
+        var dateobj = new Date();
+        //And get today's day.
+        var today = dateobj.getDay();
+        
+        //Return the message.
+        return messages[today].firstChild.nodeValue;
+    }
+    </script>
+</head>
+<body>
+<div id="messageContainer"></div>
+
+<script type="text/javascript">
+    //Create the DOM object
+    var xmlDoc = createDocument();
+    //We'll load it in synchronous mode.
+    xmlDoc.async = false;
+    //Load the XML file
+    xmlDoc.load("motd.xml");
+    
+    document.getElementById("messageContainer").innerHTML = getDailyMessage();
+</script>
+</body>
+</html>

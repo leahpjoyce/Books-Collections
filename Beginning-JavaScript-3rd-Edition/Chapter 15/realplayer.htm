@@ -1,0 +1,69 @@
+<html>
+<head>
+    <object classid="clsid:CFCDAA03-8BE4-11CF-B84B-0020AFBBCCFA" id="real1">
+        <param name="HEIGHT" value="0">
+        <param name="WIDTH" value="0">
+        <embed name="real1" id="real1" border="0" controls="play" height="0" width="0" type="audio/x-pn-realaudio-plugin">
+    </object>
+
+    <script language="JavaScript">
+
+    var fileName = "";
+    function butPlay_onclick() 
+    {
+       document.real1.SetSource("file://" + fileName);
+       document.real1.DoPlay();
+    }
+    function butStop_onclick() 
+    {
+       document.real1.DoStop();
+    }
+    function file1_onblur() 
+    {
+       fileName = document.form1.file1.value;
+    }
+
+
+    function window_onload() 
+    {
+       var plugInInstalled = false;
+       if (navigator.appName.indexOf("Microsoft") == -1)
+       {
+          var plugInCounter;
+          for (plugInCounter = 0; plugInCounter < navigator.plugins.length; plugInCounter++)
+          {
+             if (navigator.plugins[plugInCounter].name.indexOf("RealPlayer") >= 0)
+             {
+                plugInInstalled = true;
+                break;
+             }
+          }
+       }
+       else
+       {
+          if (real1.readyState == 4)
+          {
+             plugInInstalled = true;
+          }
+       }
+       if (plugInInstalled == false)
+       {
+          window.location.replace("NoRealPlayerPage.htm");
+       }
+    }
+    </script>
+
+</head>
+<body onload="return window_onload()">
+    <noembed>
+   <h2>This Page requires a browser supporting Plug-ins or ActiveX controls</h2>
+</noembed>
+    <form id="form1" name="form1">
+        <input type="button" value="Play Sound" id="butPlay" name="butPlay" language="JavaScript"
+            onclick="return butPlay_onclick()">
+        <input type="button" value="Stop Sound" id="butStop" name="butStop" language="JavaScript"
+            onclick="return butStop_onclick()">
+        <input type="file" id="file1" name="file1" language="JavaScript" onblur="return file1_onblur()">
+    </form>
+</body>
+</html>

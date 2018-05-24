@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Using the style Object</title>
+    <style type="text/css">    
+        #divAdvert {
+            font: 12pt arial;
+        }
+    </style>
+    <script type="text/javascript">
+    function divAdvert_onMouseOver() {
+        //Get the element
+        var divAdvert = document.getElementById("divAdvert");
+
+        //Italicize the text
+        divAdvert.style.fontStyle = "italic";
+
+        //Underline the text
+        divAdvert.style.textDecoration = "underline";
+    }
+    
+    function divAdvert_onMouseOut() {
+        //Get the element
+        var divAdvert = document.getElementById("divAdvert");
+        
+        //Set the font-style to normal
+        divAdvert.style.fontStyle = "normal";
+
+        //Remove the underline
+        divAdvert.style.textDecoration = "none";
+    }
+    </script>
+</head>
+<body>
+    <div id="divAdvert" onmouseover="divAdvert_onMouseOver()"
+        onmouseout="divAdvert_onMouseOut()">Here is an advertisement.</div>
+</body>
+</html>

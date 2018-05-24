@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>example</title>
+<script language="JavaScript" type="text/javascript"> 
+   var localTime = new Date();
+</script>
+</head>
+<body>
+<h4>
+   UTC Time is 
+   <script language="JavaScript" type="text/javascript"> 
+ 
+      document.write(localTime.toUTCString());
+   </script>
+</h4>
+<h4>
+   Local Time is 
+   <script language="JavaScript" type="text/javascript"> 
+      document.write(localTime.toLocaleString());
+   </script>
+</h4>
+<h4>
+   Time Zone Offset is 
+   <script language="JavaScript" type="text/javascript"> 
+      document.write(localTime.getTimezoneOffset());
+</script>
+</h4>
+
+<h4>
+Using toLocalTimeString() gives:
+<script language="JavaScript" type="text/javascript"> 
+if (localTime.toLocaleTimeString)
+{
+  document.write(localTime.toLocaleTimeString())
+}
+</script>
+</h4>
+
+
+<h4>
+Using toTimeString() gives:
+<script language="JavaScript" type="text/javascript"> 
+if (localTime.toTimeString)
+{
+  document.write(localTime.toTimeString() )
+}
+</script>
+</h4>
+
+
+<h4>
+Using toLocaleDateString() gives: 
+<script language="JavaScript" type="text/javascript"> 
+if (localTime.toLocaleDateString)
+{
+  document.write(localTime.toLocaleDateString())
+}
+</script>
+</h4>
+
+<h4>
+Using toDateString() gives: 
+<script language="JavaScript" type="text/javascript"> 
+if (localTime.toDateString)
+{
+  document.write(localTime.toDateString())
+}
+</script>
+</h4>
+
+
+</body>
+</html>

@@ -1,0 +1,91 @@
+<html>
+<head>
+    <title>Chapter 14 Question 2</title>
+    <script type="text/javascript" language="javascript">
+    function createDocument() 
+    {
+        //Temporary DOM object.
+        var xmlDoc;
+
+        //Create the DOM object for IE
+        if (window.ActiveXObject) 
+        {
+            var versions = 
+            [
+                "Msxml2.DOMDocument.6.0",
+                "Msxml2.DOMDocument.3.0"
+            ];
+
+            for (var i = 0; i < versions.length; i++) 
+            {
+                try 
+                {
+                    xmlDoc = new ActiveXObject(versions[i]);
+                    return xmlDoc;
+                } 
+                catch (error) 
+                {
+                    //do nothing here
+                }
+            }
+        }
+        //Create the DOM for Firefox and Opera
+        else if (document.implementation && document.implementation.createDocument) 
+        { 
+            xmlDoc = document.implementation.createDocument("","",null);
+            return xmlDoc;
+        }
+
+        return null;
+    }
+
+    var xmlDoc = createDocument();
+    xmlDoc.load("school.xml");
+
+    function writeTableOfSchoolChildren() 
+    {
+        var xmlNode = xmlDoc.getElementsByTagName('child');
+        var newTableElement = document.createElement('table');
+        newTableElement.setAttribute('cellPadding',5);
+
+        var tempElement = document.createElement('tbody');
+        newTableElement.appendChild(tempElement);
+        var tableRow = document.createElement('TR');
+
+        tempElement.appendChild(tableRow );
+
+        for (var i = 0; i < xmlNode.length; i++) 
+        {
+            var tableRow = document.createElement('TR');
+            for (var iRow= 0; iRow < xmlNode[i].childNodes.length; iRow++) 
+            {
+                if (xmlNode[i].childNodes[iRow].nodeType != 1) 
+                {         
+                    continue;
+                }
+                var tdElement = document.createElement('TD');
+                var textData = 
+                    document.createTextNode(xmlNode[i].childNodes[iRow].firstChild.nodeValue);
+                tdElement.appendChild(textData);
+                tableRow.appendChild(tdElement);
+            }
+
+            tempElement.appendChild(tableRow);
+        }
+        
+        document.getElementById('displaySchoolInfo').appendChild(newTableElement);
+    }
+</script>
+</head>
+
+<body>
+<p>
+    <a href="javascript: writeTableOfSchoolChildren()">
+        Show Table of Children At The School
+    </a>
+</p>
+<p id="displaySchoolInfo"></p>
+
+
+</body>
+</html>

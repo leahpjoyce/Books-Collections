@@ -1,0 +1,44 @@
+<html>
+<head>
+<script language="JavaScript"  type="text/javascript">
+var newWindow;
+function butOpenWin_onclick()
+{
+var winTop = (screen.height / 2) - 125;
+var winLeft = (screen.width / 2) - 125;
+var windowFeatures = "width=250,height=250,";
+windowFeatures = windowFeatures + "left=" + winLeft + ",";
+windowFeatures = windowFeatures + "top=" + winTop;
+newWindow = window.open("newWindow.htm","myWindow",windowFeatures);
+}
+function butGetText_onclick() 
+{
+if (typeof(newWindow) == "undefined" || newWindow.closed == true)
+   {
+alert("No window is open");
+   }
+else
+   {
+document.form1.text1.value = newWindow.document.form1.text1.value;
+   }
+}
+ 
+function window_onunload() 
+{
+if (typeof(newWindow) != "undefined" && newWindow.closed == false)
+   {
+newWindow.close();
+   }
+}
+
+</script>
+</head>
+<body onunload="window_onunload()">
+<form name=form1> <input type="button" value="Open newWindow" name=butOpenWin
+onclick="butOpenWin_onclick()"> <br><br> NewWindow's Text <br>
+<input type="text" name=text1>
+<br> <input type="button" value="Get Text" name=butGetText
+onclick="return butGetText_onclick()">
+</form>
+</body>
+</html>

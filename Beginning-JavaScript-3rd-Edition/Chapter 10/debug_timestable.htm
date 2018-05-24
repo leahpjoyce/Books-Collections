@@ -1,0 +1,29 @@
+<html>
+<head>
+<script language=JavaScript type="text/javascript">
+function writeTimesTable(timesTable)
+{
+   var counter;
+   var writeString;
+   for (counter = 1; counter < 12; counter++)
+   {
+      writeString = counter + " * " + timesTable + " = ";
+      writeString = writeString + (timesTable * counter);
+      writeString = writeString + "<BR>";
+      document.write(writeString);
+   }
+}
+</script>
+</head>
+<body>
+<div><script language=JavaScript type="text/javascript">
+var timesTable;
+debugger
+for (timesTable = 1; timesTable <= 12; timesTable++)
+{
+   document.write("<P>")
+   writeTimesTable(timesTable)
+   document.write("</P>")
+}
+</script></div>
+</body>

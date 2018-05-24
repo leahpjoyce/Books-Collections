@@ -1,0 +1,28 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+function replaceQuote(textAreaControl)
+{
+   var myText = textAreaControl.value;
+   var myRegExp = /\B'|'\B/g;
+   myText = myText.replace(myRegExp,'"');
+   textAreaControl.value = myText;
+}
+</script>
+</head>
+<body>
+<form name="form1">
+<textarea rows="20" cols="40" name="textarea1">
+'Hello World' said Mr O'Connerly.
+He then said 'My Name is O'Connerly, yes that's right, O'Connerly'.
+</textarea>
+<br>
+<input type="button" VALUE="Replace Single Quotes" name="buttonSplit"
+   onclick="replaceQuote(document.form1.textarea1)">
+</form>
+</body>
+</html>

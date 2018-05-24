@@ -1,0 +1,30 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+function butShowVisited_onclick()
+{
+document.form1.txtaPagesVisited.value = window.parent.returnPagesVisited();
+}
+</script>
+</head>
+<body onload="window.parent.addPage(window.location.href);">
+<center>
+<font size=6 color=MidnightBlue face=verdana>
+This is Page C
+</font>
+</center>
+<p>
+<A href="page_a.htm">Page A</A>
+<A href="page_b.htm">Page B</A>
+<A href="page_c.htm">Page C</A>
+<A href="page_d.htm">Page D</A>
+</p>
+<form name=form1>
+<textarea rows=10 cols=35 name=txtaPagesVisited wrap=hard>
+</textarea>
+<br>
+<input type="button" value="List Pages Visited" name=butShowVisited
+onclick="butShowVisited_onclick()">
+</form>
+</body>
+</html>

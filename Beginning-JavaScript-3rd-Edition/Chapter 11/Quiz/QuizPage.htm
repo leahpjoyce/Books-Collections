@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Quiz Page</title>
+<script language="JavaScript" type="text/javascript">
+function cmdStartQuiz_onclick() 
+{
+   var cboNoQuestions = document.frmQuiz.cboNoQuestions;
+   var noQuestions = cboNoQuestions.options[cboNoQuestions.selectedIndex].value;
+   var cboTimeLimit = document.frmQuiz.cboTimeLimit;
+   var timeLimit = cboTimeLimit.options[cboTimeLimit.selectedIndex].value;
+   window.top.fraTopFrame.fraGlobalFunctions.resetQuiz(noQuestions,timeLimit);
+	window.location.href = "AskQuestion.htm";
+}
+</script>
+<style type="text/css">
+<!--
+body {
+	background-color: #000033;
+}
+body,td,th {
+	font-family: Trebuchet MS, helvetica, sans-serif;
+	color: #CCCCCC;
+}
+
+input, select {
+	
+	font-family: "Trebuchet MS", "Lucida Sans", Georgia, "Times New Roman", Times, serif;
+	font-size: 13px;
+	color: #333333;
+	padding: 1px;
+	background: #EEE;
+
+}
+.SmallText {font-size: 12px}
+
+div#MainBodyDIV
+{
+	border:1px;
+	border-color:#CCCCCC;
+	border-style:groove;
+	padding:10px;
+	margin-top:20px;
+}
+-->
+</style>
+</head>
+<body>
+
+<div id="MainBodyDIV">
+<p>Are you ready to become a billionaire?</p>
+<p>Click the start quiz button below and you'll be just 13 questions away from winning ONE BILLION DOLLARS 
+<span class="SmallText">(ok not really but it's nice to dream...)</span> </p>
+<form name="frmQuiz">
+<p>
+Number of Questions <br>
+<select name="cboNoQuestions" size="1">
+   <option value="3">3
+   <option value="5">5
+</select>
+</p>
+<p>
+Time Limit <br>
+<select name="cboTimeLimit" size="1">
+   <option value="-1">No Time Limit
+   <option value="60">1 Minute
+   <option value="180">3 Minutes
+   <option value="300">5 Minutes
+</select>
+</p>
+
+<input name="cmdStartQuiz" type="button" value="Start Quiz"
+onclick="return cmdStartQuiz_onclick()" style="width:150px; height:30px;">
+</p>
+</form>
+</div>
+
+</body>
+</html>

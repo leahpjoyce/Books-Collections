@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD html 4.01 Transitional//EN">
+<html>
+<head>
+<title>Cookie Example</title>
+<script language="JavaScript" type="text/javascript">
+var lastUpdated = new Date("Tue, 28 Dec 2020");
+function getCookieValue(cookieName)
+{
+   var cookieValue = document.cookie;
+   var cookieStartsAt = cookieValue.indexOf(" " + cookieName + "=");
+   if (cookieStartsAt == -1)
+   {
+      cookieStartsAt = cookieValue.indexOf(cookieName + "=");
+   }
+   if (cookieStartsAt == -1)
+   {
+      cookieValue = null;
+   }
+   else
+   {
+      cookieStartsAt = cookieValue.indexOf("=", cookieStartsAt) + 1;
+      var cookieEndsAt = cookieValue.indexOf(";", cookieStartsAt);
+      if (cookieEndsAt == -1)
+      {
+         cookieEndsAt = cookieValue.length;
+      }
+      cookieValue = unescape(cookieValue.substring(cookieStartsAt,
+         cookieEndsAt));
+   }
+   return cookieValue;
+}
+function setCookie(cookieName, cookieValue, cookiePath, cookieExpires)
+{
+   cookieValue = escape(cookieValue);
+   if (cookieExpires == "")
+   {
+      var nowDate = new Date();
+      nowDate.setMonth(nowDate.getMonth() + 6);
+      cookieExpires = nowDate.toGMTString();
+   }
+   if (cookiePath != "")
+   {
+      cookiePath = ";Path=" + cookiePath;
+   }
+   document.cookie = cookieName + "=" + cookieValue + 
+      ";expires=" + cookieExpires + cookiePath;
+}
+</script>
+</head>
+<body>
+<h2 align=center>Welcome to my website</h2>
+<br><br>
+<center>
+<script>
+var lastVisit = getCookieValue("LastVisit");
+if (lastVisit != null)
+{
+   lastVisit = new Date(lastVisit);
+   if (lastVisit < lastUpdated)
+   {
+      document.write("<A href=\"WhatsNew.htm\">");
+      document.write("<img src=\"WhatsNew.gif\" border=0></A>");
+   }
+}
+var nowDate = new Date();
+setCookie("LastVisit", nowDate.toGMTString(),"","")
+</script>
+</center>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<html>
+<head>
+    <script type="text/javascript">
+    function play(fileName) 
+    {
+       document.real1.SetSource(fileName);
+       document.real1.DoPlay();
+    }
+
+
+    function window_onload() {
+       var plugInInstalled = false;
+
+       if (navigator.appName.indexOf("Microsoft") == -1)
+       {
+          var plugInCounter;
+
+          for (plugInCounter = 0; plugInCounter < navigator.plugins.length; 
+               plugInCounter++)
+          {
+             if (navigator.plugins[plugInCounter].name.indexOf("RealPlayer") >= 0)
+             {
+                plugInInstalled = true
+                break;
+             }
+          }
+       }
+       else
+       {
+          if (real1.readyState == 4)
+             plugInInstalled = true;
+       }
+
+       if (plugInInstalled == false)
+          window.location.replace("NoRealAudioPage.htm");
+    }
+    </script>
+    <object classid="clsid:CFCDAA03-8BE4-11CF-B84B-0020AFBBCCFA" id="real1" viewastext>
+        <param name="height" value="0">
+        <param name="width" value="0">
+        <embed name="real1" id="real1" border="0" controls="play" height="0" width="0" type="audio/x-pn-realaudio-plugin">
+    </object>
+</head>
+<body onload="window_onload()">
+    <a onmouseover="play('Evil_Laugh.ra')" onmouseout="document.real1.DoStop();" href="#">
+        Evil Laugh
+    </a>&nbsp;&nbsp;
+    <a onmouseover="play('Whoosh.ra')" onmouseout="document.real1.DoStop();" href="#">
+        Whooosh!
+    </a>&nbsp;&nbsp;
+    <a onmouseover="play('Explosion.ra')" onmouseout="document.real1.DoStop();" href="#">
+        Kaboom!
+    </a>
+</body>
+</html>

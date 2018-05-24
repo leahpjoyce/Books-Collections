@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Using the className Property</title>
+    <style type="text/css">
+        .defaultStyle {
+            font: normal 12pt arial;
+            text-decoration: none;
+        }
+        
+        .newStyle {
+            font: italic 12pt arial;
+            text-decoration: underline;
+        }
+    </style>
+    <script type="text/javascript">
+    function divAdvert_onMouseOver() {
+        //Get the element
+        var divAdvert = document.getElementById("divAdvert");
+
+        //Change the className
+        divAdvert.className = "newStyle";
+    }
+    
+    function divAdvert_onMouseOut() {
+        //Get the element
+        var divAdvert = document.getElementById("divAdvert");
+        
+        //Change the className
+        divAdvert.className = "defaultStyle";
+    }
+    </script>
+</head>
+<body>
+    <div id="divAdvert" class="defaultStyle" onmouseover="divAdvert_onMouseOver()"
+        onmouseout="divAdvert_onMouseOut()">Here is an advertisement.</div>
+</body>
+</html>

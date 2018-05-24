@@ -1,0 +1,17 @@
+<html>
+<body>
+<script language="JavaScript" type="text/javascript">
+function linkSomePage_onclick()
+{
+   alert('This link is going nowhere');
+   return false;
+}
+</script>
+<A href="somepage.htm" name="linkSomePage">
+   Click Me
+</A>
+<script language="JavaScript" type="text/JavaScript">
+   window.document.links[0].onclick = linkSomePage_onclick;
+</script>
+</body>
+</html>

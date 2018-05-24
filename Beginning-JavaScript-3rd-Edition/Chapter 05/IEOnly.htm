@@ -1,0 +1,50 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+
+function getBrowserName()
+{
+   var lsBrowser = navigator.userAgent;
+   if (lsBrowser.indexOf("MSIE") >= 0)
+   {
+      lsBrowser = "MSIE";
+   }
+   else if (lsBrowser.indexOf("Netscape") >= 0)
+   {
+      lsBrowser = "Netscape";
+   }
+   else if (lsBrowser.indexOf("Firefox") >= 0)
+   {
+      lsBrowser = "Firefox";
+   }
+   else if (lsBrowser.indexOf("Safari") >= 0)
+   {
+   	lsBrowser = "Safari";
+   }
+   else if (lsBrowser.indexOf("Opera") >= 0)
+   {
+   	lsBrowser = "Opera";
+   }
+   else
+   {
+   	lsBrowser = "UNKNOWN";
+   }
+   return lsBrowser;
+}
+
+function checkBrowser()
+{
+   if (getBrowserName() == "Firefox")
+   {
+      window.location.replace("FFOnly.htm");
+   }
+}
+
+</script>
+</head>
+<body onload="checkBrowser()">
+
+<H2>Welcome to the Internet Explorer only page</H2>
+
+</body>
+</html>

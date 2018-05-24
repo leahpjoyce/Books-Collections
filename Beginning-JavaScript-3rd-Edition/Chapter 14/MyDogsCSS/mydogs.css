@@ -1,0 +1,28 @@
+dog 
+{
+	margin: 15px;
+	display: block;
+}
+
+name 
+{
+	display: block;
+	font: bold 18pt arial;
+}
+
+age 
+{
+	display: block;
+	color: red;
+}
+
+fullBlood 
+{
+	display: none;
+}
+
+color 
+{
+	display: block;
+	font-style: italic;
+}

@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>Online Books</title>
+<script language="JavaScript" type="text/javascript">
+var detailsWindow;
+function showDetails(bookURL)
+{
+   detailsWindow = window.open(bookURL,"bookDetails","width=400,height=350");
+   detailsWindow.focus();
+   return false;
+}
+</script>
+</head>
+<body>
+<h2 align=center>Online Book Buyer</h2>
+ 
+<p>
+Click any of the images below for more details
+</p>
+<strong>Professional Active Server Pages .Net</strong>
+<br>
+	<img src="pro_asp.jpg" border="0" onclick="return showDetails('pro_asp_details.htm')">
+<br><br>
+<strong>Beginning Dreamweaver MX 2004</strong>
+<br>
+      <img src="beg_dreamweaver.jpg" border="0" onclick="return showDetails('beg_dreamweaver_details.htm')">
+</body>
+</html>

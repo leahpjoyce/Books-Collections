@@ -1,0 +1,24 @@
+<html>
+<head>
+<script language="JavaScript" type="text/javascript">
+
+function mouseOver()
+{
+   document.images["myImage"].src = "Img2.jpg";
+}
+
+function mouseOut()
+{
+   document.images["myImage"].src = "Img1.jpg";
+}
+</script>
+</head>
+<body>
+
+      <img src="Img1.jpg" 
+          name="myImage" 
+          onmouseover="mouseOver()" 
+          onmouseout="mouseOut()">
+
+</body>
+</html>

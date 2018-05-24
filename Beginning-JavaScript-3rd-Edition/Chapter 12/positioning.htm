@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Positioning</title>
+    <style type="text/css">
+        #divBox {
+            position: absolute;
+            background-color: silver;
+            width: 150px;
+            height: 150px;
+        }
+        
+        input {
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript">
+    function moveBox() {
+        var divBox = document.getElementById("divBox");
+        var inputLeft = document.getElementById("inputLeft");
+        var inputTop = document.getElementById("inputTop");
+        
+        divBox.style.left = parseInt(inputLeft.value) + "px";
+        divBox.style.top = parseInt(inputTop.value) + "px";
+    }
+    </script>
+</head>
+<body>
+    <div id="divBox">
+        <form id="formBoxController" onsubmit="moveBox(); return false;">
+            <p>Left: <input type="text" id="inputLeft" /></p>
+            <p>Top: <input type="text" id="inputTop" /></p>
+            <p><input type="submit" value="Move The Box" /></p>
+        </form>
+    </div>
+</body>
+</html>

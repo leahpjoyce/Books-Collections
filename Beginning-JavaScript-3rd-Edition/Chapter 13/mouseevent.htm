@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+</head>
+<body onclick="handleClick(event)">
+    Click anywhere on the screen if you're using Firefox. 
+    Click on this text if you're using IE, Opera, or Safari.
+
+    <script language="JavaScript">
+    function handleClick(e)
+    {
+        alert("You clicked on the screen at X" + e.clientX +" and Y" + e.clientY);
+    }      
+    </script>
+</body>
+</html>

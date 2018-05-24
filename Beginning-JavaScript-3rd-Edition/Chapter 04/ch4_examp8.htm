@@ -1,0 +1,116 @@
+<html>
+<body>
+
+<h2>Summary of bookings</h2>
+
+<script language="JavaScript" type="text/javascript">
+
+// CustomerBooking class
+
+function CustomerBooking(bookingId, customerName, film, showDate)
+{
+  this.customerName = customerName;
+  this.bookingId = bookingId;
+  this.showDate = showDate;
+  this.film = film;
+}
+
+CustomerBooking.prototype.getCustomerName = function()
+{
+ return this.customerName;
+}
+
+CustomerBooking.prototype.setCustomerName = function(customerName)
+{
+ this.customerName = customerName;
+}
+
+CustomerBooking.prototype.getShowDate = function()
+{
+ return this.showDate;
+}
+
+CustomerBooking.prototype.setShowDate = function(showDate)
+{
+ this.showDate = showDate;
+}
+
+CustomerBooking.prototype.getFilm = function()
+{
+ return this.film;
+}
+
+CustomerBooking.prototype.setFilm = function(film)
+{
+ this.film = film;
+}
+
+CustomerBooking.prototype.getBookingId = function()
+{
+ return this.bookingId;
+}
+
+CustomerBooking.prototype.setBookingId = function(bookingId)
+{
+ this.bookingId = bookingId;
+}
+
+// cinema class
+
+function cinema() 
+{
+   this.bookings = new Array();
+}
+
+cinema.prototype.addBooking = function(bookingId, customerName, film, showDate) 
+{
+   this.bookings[bookingId] = new CustomerBooking(bookingId, 
+                                                  customerName, film, showDate);
+}
+
+
+cinema.prototype.getBookingsTable = function() 
+{
+  var booking;
+     var bookingsTableHTML = "<table border=1>";
+
+     for (booking in this.bookings)
+     {
+       bookingsTableHTML += "<tr><td>";
+    bookingsTableHTML += this.bookings[booking].getBookingId();
+    bookingsTableHTML += "</td>";
+ 
+    bookingsTableHTML += "<td>";
+    bookingsTableHTML += this.bookings[booking].getCustomerName();
+    bookingsTableHTML += "</td>";
+
+    bookingsTableHTML += "<td>";
+    bookingsTableHTML += this.bookings[booking].getFilm();
+    bookingsTableHTML += "</td>";
+    
+           bookingsTableHTML += "<td>";
+    bookingsTableHTML += this.bookings[booking].getShowDate();
+    bookingsTableHTML += "</td>";
+       bookingsTableHTML += "</tr>";
+     }
+       bookingsTableHTML += "</table>";
+     return bookingsTableHTML;
+}
+
+var londonOdeon = new cinema();
+londonOdeon.addBooking(342, "Arnold Palmer","Toy Story", "15 July 2009 20:15");
+londonOdeon.addBooking(335, "Louise Anderson",
+                       "The Shawshank Redemption", "27 July 2009 11:25");
+londonOdeon.addBooking(566, "Catherine Hughes",
+                            "Never Say Never", "27 July 2009 17:55");
+londonOdeon.addBooking(324, "Beci Smith","Shrek", "29 July 2009 20:15");
+
+
+document.write(londonOdeon.getBookingsTable());
+
+
+</script>
+
+</body>
+</html>
+

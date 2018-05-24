@@ -1,0 +1,16 @@
+<html>
+<body>
+<script language="JavaScript" type="text/javascript">
+function writeTimesTable(timesTable, timesByStart, timesByEnd)
+{
+   for (;timesByStart <= timesByEnd; timesByStart++)
+   {
+      document.write(timesTable + " * " + timesByStart + " = " + 
+         timesByStart * timesTable + "<br>");
+   }
+}
+
+writeTimesTable(4,4,9);
+</script>
+</body>
+</html>

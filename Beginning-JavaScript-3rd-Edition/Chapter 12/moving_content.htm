@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+    
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Moving Content</title>
+    <style type="text/css">    
+        #divAdvert {
+            position: absolute;
+            font: 12px Arial;
+            top: 4px;
+            left: 0px;
+        }
+    </style>
+    <script type="text/javascript">
+    var switchDirection = false;  //To keep track if which way we're going
+
+    function doAnimation() {
+        var divAdvert = document.getElementById("divAdvert");  //Get the element
+        var currentLeft = divAdvert.offsetLeft; //Get the current left position
+        var newLocation; //Will store the new location
+        
+        if (switchDirection == false) { 
+            newLocation = currentLeft + 2; //Move the text 2 pixels to the right
+            
+            if (currentLeft >= 400) { //We've reached our destination
+                switchDirection = true; //So let's turn around
+            }
+        } else {
+            newLocation = currentLeft - 2; //Move the text 2 pixels to the left
+            
+            if (currentLeft <= 0) { //We've reached our destination
+                switchDirection = false; //So let's turn around
+            }
+        }
+        
+        divAdvert.style.left = newLocation + "px"; //Change the left position
+        setTimeout(doAnimation, 10); //Keep the animation running.
+    }
+    
+    window.onload = doAnimation; //Load the animation when the page loads
+    </script>
+</head>
+<body>
+    <div id="divAdvert">Here is an advertisement.</div>
+</body>
+</html>

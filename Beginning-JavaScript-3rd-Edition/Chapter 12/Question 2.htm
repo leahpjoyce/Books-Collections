@@ -1,0 +1,56 @@
+<html>
+<head>
+<style type="text/css">
+    #floatingDiv {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        width: 50px;
+        height: 50px;
+        background-color: navy;
+    }
+</style>
+<script type="text/javascript">
+
+var floatingDiv;
+var screenWidth;
+var screenHeight;
+
+var horizontalMovement = Math.ceil(Math.random() * 5);
+var verticalMovement = Math.ceil(Math.random() * 5);
+
+function startTimer() {
+    floatingDiv  = document.getElementById("floatingDiv");
+    screenWidth  = document.body.clientWidth;
+    screenHeight = document.body.clientHeight;
+    
+    window.setInterval("moveDiv()", 10);
+}
+
+function moveDiv() {
+    var currentLeft = floatingDiv.offsetLeft;
+    var currentTop  = floatingDiv.offsetTop;
+
+    if (currentTop < 0) {
+        verticalMovement = Math.ceil(Math.random() * 5);
+    } else if ( ( currentTop + floatingDiv.offsetHeight ) > screenHeight ) {
+        verticalMovement = -(Math.ceil(Math.random() * 5));
+    }
+
+    if (currentLeft < 0) {
+        horizontalMovement = Math.ceil(Math.random() * 5);
+    } else if ( ( currentLeft + floatingDiv.offsetWidth) > screenWidth ) {
+        horizontalMovement = -(Math.ceil(Math.random() * 5));
+    }
+
+    floatingDiv.style.left = currentLeft + horizontalMovement + "px";
+    floatingDiv.style.top = currentTop + verticalMovement + "px";
+}
+</script>
+
+
+</head>
+<body onload="startTimer()">
+    <div id="floatingDiv"></div>
+</body>
+</html>

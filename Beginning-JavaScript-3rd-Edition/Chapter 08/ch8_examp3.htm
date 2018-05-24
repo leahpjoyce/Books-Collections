@@ -1,0 +1,12 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<body>
+<script language="JavaScript" type="text/JavaScript">
+var myListString = "apple, 0.99, banana, 0.50, peach, 0.25, orange, 0.75";
+var theRegExp = /[^a-z]+/i;
+var myFruitArray = myListString.split(theRegExp);
+document.write(myFruitArray.join("<br>"));
+</script>
+</body>
+</html>

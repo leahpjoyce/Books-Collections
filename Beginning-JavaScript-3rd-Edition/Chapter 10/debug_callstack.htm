@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language=JavaScript type="text/javascript">
+function firstCall()
+{
+   secondCall();
+}
+function secondCall()
+{
+   thirdCall();
+}
+function thirdCall()
+{
+   //
+}
+function button1_onclick() 
+{
+   debugger
+   firstCall();
+}
+</script>
+</head>
+<body>
+<input type="button" value="Button" name=button1 
+   onclick="return button1_onclick()">
+</body>
+</html>

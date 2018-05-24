@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<school>
+  <child>
+    <name>Bibby Jones</name>
+    <age>13</age>
+    <class>
+      1B
+    </class>
+  </child>
+  <child>
+    <name>Beci Smith</name>
+    <age>12</age>
+    <class>
+      1B
+    </class>
+  </child>
+  <child>
+    <name>Jack Wilson</name>
+    <age>14</age>
+    <class>
+      2C
+    </class>
+  </child>
+</school>

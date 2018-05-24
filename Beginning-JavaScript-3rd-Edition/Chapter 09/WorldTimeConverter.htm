@@ -1,0 +1,82 @@
+<html>
+<head>
+<script language="javascript" type="text/javascript">
+var timeDiff;
+var selectedCity;
+var daylightSavingAdjust = 0;
+
+function window_onload()
+{
+   updateTimeZone();
+   window.setInterval("updateTime()",1000);
+}
+
+
+function updateTimeZone() 
+{
+   var lstCity = document.form1.lstCity;
+   timeDiff = lstCity.options[lstCity.selectedIndex].value;
+   selectedCity = lstCity.options[lstCity.selectedIndex].text;
+   updateTime();
+}
+function getTimeString(dateObject)
+{
+   var timeString;
+   var hours = dateObject.getHours();
+   if (hours < 10)
+      hours = "0" + hours;
+   var minutes = dateObject.getMinutes();
+   if (minutes < 10)
+      minutes = "0" + minutes;
+   var seconds = dateObject.getSeconds()
+   if (seconds < 10)
+      seconds = "0" + seconds;
+   timeString = hours + ":" + minutes + ":" + seconds;
+   return timeString;
+}
+function updateTime()
+{
+   var nowTime = new Date();
+   var resultsFrame = window.top.resultsFrame.document;
+   resultsFrame.open()
+   resultsFrame.write("Local Time is " + getTimeString(nowTime) + "<br>");
+   nowTime.setMinutes(nowTime.getMinutes() + nowTime.getTimezoneOffset() + 
+      parseInt(timeDiff) + daylightSavingAdjust);
+   resultsFrame.write(selectedCity + " time is " + getTimeString(nowTime));
+   resultsFrame.close();
+}
+function chkDaylightSaving_onclick()
+{
+   if (document.form1.chkDaylightSaving.checked)
+   {
+      daylightSavingAdjust = 60;
+   }
+   else
+   {
+      daylightSavingAdjust = 0;
+   }
+   updateTime();
+}
+</script>
+</head>
+<body onload="return window_onload()">
+<form name=form1>
+<select size=5 name=lstCity language=JavaScript onchange="updateTimeZone();">
+<option value=60 selected>Berlin 
+<option value=330>Bombay 
+<option value=0>London 
+<option value=180>Moscow 
+<option value=-300>New York (EST) 
+<option value=60>Paris 
+<option value=-480>San Francisco (PST) 
+<option value=600>Sydney 
+</select>
+<p>
+It's summer time in the selected city 
+and its country adjusts for summertime daylight saving
+<input type="checkbox" name=chkDaylightSaving language=JavaScript
+   onclick="return chkDaylightSaving_onclick()">
+</p>
+</form>
+</body>
+</html>

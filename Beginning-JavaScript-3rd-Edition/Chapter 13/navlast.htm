@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>NavLast</title>
+</head>
+<body>
+    <h1 id="Heading1">My Heading</h1>
+    <p id="Paragraph1">This is some text in a paragraph</p>
+
+    <script type="text/javascript">
+    var htmlElement; // htmlElement stores reference to <html>
+    var headingElement; // headingElement stores reference to <head>
+    var bodyElement; // bodyElement stores reference to <body>
+    var h1Element; // h1Element stores reference to <h1>
+    var pElement; // pElement stores reference to <p>
+
+    htmlElement = document.documentElement;
+    headingElement = htmlElement.firstChild;
+
+    alert(headingElement.tagName);
+
+    if (headingElement.nextSibling.nodeType == 3)
+    {
+    bodyElement = headingElement.nextSibling.nextSibling;
+    }
+    else
+    {
+    bodyElement = headingElement.nextSibling;
+    }
+    alert(bodyElement.tagName);
+
+    if (bodyElement.firstChild.nodeType == 3)
+    {
+    h1Element = bodyElement.firstChild.nextSibling;
+    }
+    else
+    {
+    h1Element = bodyElement.firstChild;
+    }
+
+    alert(h1Element.tagName);
+    h1Element.style.fontFamily = "Arial";
+
+    if (h1Element.nextSibling.nodeType == 3)
+    {
+    pElement = h1Element.nextSibling.nextSibling;
+    }
+    else
+    {
+    pElement = h1Element.nextSibling;
+    }
+
+    alert(pElement.tagName);
+    pElement.style.fontFamily = "Arial";
+
+    if (pElement.previousSibling.nodeType==3)
+    {
+    h1Element = pElement.previousSibling.previousSibling
+    }
+    else
+    {
+
+    h1Element = pElement.previousSibling
+    }
+    h1Element.style.fontFamily = "Courier"
+    </script>
+</body>
+</html>

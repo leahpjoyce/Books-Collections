@@ -1,0 +1,133 @@
+<html>
+<head>
+    <title>Cross-Browser Toolbar</title>
+    <style type="text/css">
+    .toolbar 
+    {
+        background-color: #E4E2D5;
+        padding: 3px;
+    }
+
+    .toolbar div 
+    {
+        display: -moz-inline-stack;
+        display: inline;
+        height: 24px;
+        width: 24px;
+    }
+
+    .toolbar-button 
+    {
+        padding: 3px;
+    }
+
+    .toolbar-button-hover 
+    {
+        border: 1px solid #316AC5;
+        background-color: #C1D2EE;
+        padding: 2px;
+        cursor: pointer;
+    }
+
+    .toolbar-icon 
+    {
+        height: 24px;
+        width: 24px;
+    }
+    </style>
+    <script type="text/javascript">
+    function button_mouseover(e) {
+        var eSrc;
+        
+        if (window.event) {
+            eSrc = window.event.srcElement;
+        } else {
+            eSrc = e.target;
+        }
+        
+        if (eSrc.className == "toolbar-button") {
+            eSrc.className = "toolbar-button-hover";
+        }
+    }
+
+    function button_mouseout(e) {
+        var eSrc, toSrc;
+        
+        if (window.event) {
+            eSrc = window.event.srcElement;
+            toSrc = window.event.toElement;
+        } else {
+            eSrc = e.target;
+            toSrc = e.relatedTarget;
+        }
+        
+        if (eSrc.className == "toolbar-button-hover" && toSrc.tagName != "IMG") {
+            eSrc.className = "toolbar-button";
+        }
+    }
+
+    function button_click(e) {
+        var eSrc;
+        
+        if (window.event) {
+            eSrc = window.event.srcElement;
+        } else {
+            eSrc = e.target;
+        }
+
+        if (eSrc.tagName == "IMG") {
+            eSrc = eSrc.parentNode;
+        }
+
+        eSrc.className = "toolbar-button";
+        window.location.href = eSrc.getAttribute("href");
+    }
+
+    function createToolbar(sName, aButtons) {
+        var toolbar = document.createElement("div");
+        toolbar.id  = sName;
+        toolbar.className = "toolbar";
+        
+
+        for (var i = 0; i < aButtons.length; i++) {
+            var thisButton = aButtons[i];
+
+            var button = document.createElement("div");
+            var icon = document.createElement("img");
+
+            button.setAttribute("href", thisButton[1]);
+            button.className = "toolbar-button";
+            
+            button.onclick = button_click;
+            button.onmouseover = button_mouseover;
+            button.onmouseout = button_mouseout;
+            
+            icon.src = thisButton[0];
+            icon.className = "toolbar-icon";
+
+            button.appendChild(icon);
+            toolbar.appendChild(button);
+        }
+
+        document.body.appendChild(toolbar);
+    }
+    
+    var myToolbar = new Array();
+    
+    myToolbar[0]    = new Array();
+    myToolbar[0][0] = "img/green.gif";
+    myToolbar[0][1] = "javascript: alert('You Clicked the Green Button!')";
+    
+    myToolbar[1]    = new Array();
+    myToolbar[1][0] = "img/blue.gif";
+    myToolbar[1][1] = "javascript: alert('You Clicked the Blue Button!')";
+    
+    myToolbar[2]    = new Array();
+    myToolbar[2][0] = "img/red.gif";
+    myToolbar[2][1] = "http://www.wrox.com";
+    </script>
+</head>
+<body onload="createToolbar('myToolbar', myToolbar)">
+
+</body>
+</html>

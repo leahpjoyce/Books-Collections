@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Cross-browser Image Rollover</title>
+</head>
+<body>
+    <img src="x.gif" />
+    
+    <script type="text/javascript">
+    function image_eventHandler(evt) {
+        
+        var elementTarget;
+        var eventType;
+        if (window.event) { //The browser is IE
+            elementTarget = window.event.srcElement;
+            eventType = window.event.type;
+        } else { //The browser is non-IE
+            elementTarget = evt.target;
+            eventType = evt.type;
+        }
+            
+        if (eventType == "mouseover") { //The mouse rolled over the image.
+            elementTarget.src = "o.gif"; //So change the image's src property.
+        }
+        
+        if (eventType == "mouseout") { //The mouse moved out.
+            elementTarget.src = "x.gif"; //So change it back to the original.
+        }
+    }
+    
+    
+    document.images[0].onmouseover = image_eventHandler;
+    document.images[0].onmouseout = image_eventHandler;
+    </script>
+</body>
+</html>

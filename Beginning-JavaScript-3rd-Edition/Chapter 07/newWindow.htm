@@ -1,0 +1,19 @@
+<html>
+<head>
+<script language="JavaScript"  type="text/javascript">
+function butGetText_onclick() 
+{
+document.form1.text1.value = window.opener.document.form1.text1.value;
+}
+</script>
+</head>
+<body>
+<form name=form1>
+Opener window's text<BR>
+<input type="text" name=text1>
+<br>
+<input type="button" value="Get Text" name=butGetText language="JavaScript"  type="text/javascript"
+onclick="butGetText_onclick()">
+</form>
+</body>
+</html>

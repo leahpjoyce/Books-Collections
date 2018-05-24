@@ -1,0 +1,30 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script language="JavaScript" type="text/JavaScript">
+function setCookie (cookieName, cookieValue, cookiePath, cookieExpires)
+{
+   cookieValue = escape(cookieValue);
+   if (cookieExpires == "")
+   {
+      var nowDate = new Date();
+      nowDate.setMonth(nowDate.getMonth() + 6);
+      cookieExpires = nowDate.toGMTString();
+   }
+   if (cookiePath != "")
+   {
+      cookiePath = ";Path=" + cookiePath;
+   }
+   document.cookie = cookieName + "=" + cookieValue + 
+      ";expires=" + cookieExpires + cookiePath;
+}
+setCookie("Name","Bob","","");
+setCookie("Age","101","","");
+setCookie("FirstVisit","10 May 2007","","");
+alert(document.cookie);
+</script>
+</head>
+<body>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>example</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script language="JavaScript" type="text/JavaScript">
+function button1_onclick() 
+{
+   var myString = "<table align=center><tr><td>";
+   myString = myString + "Hello World</td></tr></table>";
+   myString = myString +"<br><h2>Heading</h2>";
+   var myRegExp = /<[^>\r\n]+>|[^<>\r\n]+/g;
+   var resultsArray = myString.match(myRegExp);
+   document.form1.textarea1.value = "";
+   document.form1.textarea1.value = resultsArray.join ("\r\n");
+}
+</script>
+</head>
+<body>
+<form name="form1">
+   <textarea rows="20" cols="40" name="textarea1"></textarea>
+   <input type="button" value="Split HTML" name="button1" 
+      onclick="return button1_onclick();">
+</form>
+</body>
+</html>

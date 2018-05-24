@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title>Using the target Property</title>
+
+    <script type="text/javascript">
+    function image_eventHandler(evt) {
+
+        var eventTarget = evt.target;  //Get the element.
+        var eventType = evt.type;  //Get the type of event.
+        
+        if (eventType == "mouseover") { //The mouse rolled over the image.
+            eventTarget.src = "o.gif"; //So change the image's src property.
+        }
+        
+        if (eventType == "mouseout") { //The mouse moved out.
+            eventTarget.src = "x.gif"; //So change it back to the original picture.
+        }
+    }
+    </script>
+</head>
+<body>
+    <img src="x.gif" onmouseover="image_eventHandler(event)" onmouseout="image_eventHandler(event)" />
+</body>
+</html>
