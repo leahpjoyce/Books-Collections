@@ -1,7 +1,7 @@
-# Books-Collection
+# Books-Collections
 
 
-## Personal Development Books Collection
+## Personal Development Books Collections
 
 - Rich Dad Poor Dad by Robert T. Kiyosaki
 - Think and Grow Rich by Napoleon Hill
